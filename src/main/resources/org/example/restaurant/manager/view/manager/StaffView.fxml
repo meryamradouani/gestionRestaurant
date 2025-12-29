@@ -1,23 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclaration XML standard pour un fichier FXML -->
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<!-- Imports des contrôles (Button, TableView, TableColumn, …) et des layouts (HBox, AnchorPane, …) -->
 
-<AnchorPane styleClass="main-container" stylesheets="@../../styles/staff.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.restaurant.manager.controllers.manager.StaffController">
+<AnchorPane styleClass="main-container"
+            stylesheets="@../../styles/staff.css"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.restaurant.manager.controllers.manager.StaffController">
+    <!-- AnchorPane = conteneur racine de cette vue.
+         styleClass="main-container" : classe CSS principale pour styler le fond.
+         stylesheets=".../staff.css" : feuille de style spécifique à cet écran.
+         fx:controller : lie cette vue au contrôleur Java StaffController. -->
 
     <!-- Barre d'outils avec bouton Ajouter -->
-    <HBox alignment="CENTER_RIGHT" styleClass="toolbar" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="10">
-        <Button onAction="#handleAddStaff" style="-fx-background-color: #133823;" styleClass="add-button" text="Ajouter Staff" textFill="WHITE" />
+    <HBox alignment="CENTER_RIGHT"
+          styleClass="toolbar"
+          AnchorPane.leftAnchor="20"
+          AnchorPane.rightAnchor="20"
+          AnchorPane.topAnchor="10">
+        <!-- HBox = barre horizontale en haut de l'écran.
+             alignment="CENTER_RIGHT" : contenu aligné à droite.
+             ancrages : 20 px à gauche/droite, 10 px du haut. -->
+
+        <Button onAction="#handleAddStaff"
+                style="-fx-background-color: #133823;"
+                styleClass="add-button"
+                text="Ajouter Staff"
+                textFill="WHITE" />
+        <!-- Bouton "Ajouter Staff".
+             onAction="#handleAddStaff" : appelle la méthode handleAddStaff() du contrôleur.
+             style + styleClass : couleur et style CSS du bouton.
+             textFill="WHITE" : texte en blanc. -->
     </HBox>
 
     <!-- TableView -->
-    <TableView fx:id="staffTable" styleClass="staff-table" AnchorPane.bottomAnchor="20" AnchorPane.leftAnchor="20" AnchorPane.rightAnchor="20" AnchorPane.topAnchor="60">
+    <TableView fx:id="staffTable"
+               styleClass="staff-table"
+               AnchorPane.bottomAnchor="20"
+               AnchorPane.leftAnchor="20"
+               AnchorPane.rightAnchor="20"
+               AnchorPane.topAnchor="60">
+        <!-- TableView qui affiche la liste des membres du staff.
+             fx:id="staffTable" : utilisé dans StaffController avec @FXML.
+             ancrages : 20 px de chaque côté, 60 px sous la barre d'outils. -->
+
         <columns>
-            <TableColumn fx:id="idColumn" prefWidth="80" styleClass="column-id" text="ID" />
-            <TableColumn fx:id="nameColumn" prefWidth="200" styleClass="column-name" text="Nom" />
-            <TableColumn fx:id="emailColumn" prefWidth="250" styleClass="column-email" text="Email" />
-            <TableColumn fx:id="roleColumn" prefWidth="150" styleClass="column-role" text="Rôle" />
-            <TableColumn fx:id="actionColumn" prefWidth="180" styleClass="column-actions" text="Actions" />
+            <!-- Définition des colonnes du tableau -->
+
+            <TableColumn fx:id="idColumn"
+                         prefWidth="80"
+                         styleClass="column-id"
+                         text="ID" />
+            <!-- Colonne ID du staff.
+                 fx:id="idColumn" lié au champ idColumn dans le contrôleur. -->
+
+            <TableColumn fx:id="nameColumn"
+                         prefWidth="200"
+                         styleClass="column-name"
+                         text="Nom" />
+            <!-- Colonne Nom du staff. -->
+
+            <TableColumn fx:id="emailColumn"
+                         prefWidth="250"
+                         styleClass="column-email"
+                         text="Email" />
+            <!-- Colonne Email du staff. -->
+
+            <TableColumn fx:id="roleColumn"
+                         prefWidth="150"
+                         styleClass="column-role"
+                         text="Rôle" />
+            <!-- Colonne Rôle (ex. Staff, Admin). -->
+
+            <TableColumn fx:id="actionColumn"
+                         prefWidth="180"
+                         styleClass="column-actions"
+                         text="Actions" />
+            <!-- Colonne Actions : contient les boutons Modifier / Supprimer
+                 configurés dans StaffController via setCellFactory. -->
         </columns>
     </TableView>
 </AnchorPane>
