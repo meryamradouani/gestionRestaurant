@@ -1,13 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Déclaration XML standard -->
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="org.example.restaurant.manager.controllers.manager.OrdersController">
+<!-- Imports des classes JavaFX utilisées (TableView, TableColumn, AnchorPane, etc.) -->
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.restaurant.manager.controllers.manager.OrdersController">
+    <!-- AnchorPane = conteneur racine de cette vue.
+         fx:controller = classe Java qui contrôle cette interface (OrdersController). -->
+
     <children>
-        <TableView fx:id="orderTable" layoutX="10.0" layoutY="10.0" prefWidth="580.0" prefHeight="380.0">
+        <!-- Tous les nœuds graphiques enfants de l'AnchorPane. -->
+
+        <TableView fx:id="orderTable"
+                   layoutX="10.0" layoutY="10.0"
+                   prefWidth="580.0" prefHeight="380.0">
+            <!-- TableView qui affiche la liste des commandes.
+                 fx:id="orderTable" permet au contrôleur d'y accéder avec @FXML.
+                 layoutX / layoutY = position dans l'AnchorPane.
+                 prefWidth / prefHeight = taille préférée du tableau. -->
+
             <columns>
-                <TableColumn fx:id="orderIdColumn" text="Order ID" prefWidth="100.0"/>
-                <TableColumn fx:id="customerNameColumn" text="Customer" prefWidth="240.0"/>
-                <TableColumn fx:id="statusColumn" text="Status" prefWidth="240.0"/>
+                <!-- Définition des colonnes du tableau. -->
+
+                <TableColumn fx:id="orderIdColumn"
+                             text="Order ID"
+                             prefWidth="100.0"/>
+                <!-- Colonne pour l'identifiant de la commande. 
+                     fx:id = lien avec la propriété @FXML orderIdColumn dans le contrôleur.
+                     text = titre affiché dans l’en-tête. -->
+
+                <TableColumn fx:id="customerNameColumn"
+                             text="Customer"
+                             prefWidth="240.0"/>
+                <!-- Colonne pour le nom du client. -->
+
+                <TableColumn fx:id="statusColumn"
+                             text="Status"
+                             prefWidth="240.0"/>
+                <!-- Colonne pour le statut de la commande (en cours, servie, payée, etc.). -->
             </columns>
         </TableView>
     </children>
